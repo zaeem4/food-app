@@ -1,0 +1,42 @@
+$primaryColor: hotpink;
+$menuFirstFont: small;
+$menuFirstImg: 4vh;
+$secondaryColor:white;
+$itemShadowFont:small;
+.bg-light {
+    background-color: $primaryColor !important;
+}
+
+.menu-bar-first {
+    font-size: $menuFirstFont !important;
+    white-space: nowrap;
+}
+
+.menu-bar-first img {
+    width: $menuFirstImg !important;
+}
+
+.nav-link:focus,
+.nav-link:hover {
+    color: $primaryColor;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    color: $primaryColor;
+    background-color: transparent;
+}
+
+#stick-to-top {
+    top: 9vh;
+    background: $secondaryColor;
+}
+
+.navbar-white {
+    background-color: $secondaryColor !important;
+    background: $secondaryColor;
+}
+
+.scroll-bar-item-shadow {
+    font-size: $itemShadowFont!important;
+}

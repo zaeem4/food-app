@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Food App</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style/custom.css" />
+    <style>
+        .hidden {
+            display: none !important;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/custom.js"></script>
+
+</head>
+
+<body>
+
+    <div class="modal fade" id="cart-model" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <img src="images/coffee.png" alt="" />
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-8 text-center">kaffie</div>
+                    <div class="col-4">$2.90</div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-8 text-center">
+                        <div class="qty">
+                            <span class="minus">-</span>
+                            <input type="number" class="count" name="qty" value="1">
+                            <span class="plus">+</span>
+                        </div>
+                    </div>
+                    <div class="col-4">$2.90</div>
+                </div>
+                <div class="row my-3">
+                    <div class="col-12 text-center">
+                        <button class="btn border menu-bar-first bg-light"><strong> ADD TO ORDER</strong></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar fixed-top navbar-light bg-light">
+        <div class="container-fluid">
+            <button type="button" class="navbar-toggler border-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <a href="#" class="navbar-brand">Brand Name</a>
+        </div>
+    </nav>
+
+    <div id="fixed-scroll">
+        <header>
+            <img src="images/mainBanner.jpg" />
+        </header>
+        <div class="container">
+            <div id="stick-to-top" class="sticky-top">
+                <div class="row text-center pt-2">
+                    <div class="col-4 align-items-center menu-bar-first ">
+                        <ul class="d-inline-flex align-items-center list-unstyled">
+                            <li><img src="images/clock.svg" alt="" /></li>
+                            <li class="ps-2">
+                                <div><strong>45 Mins</strong><br />Time</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-4 align-items-center menu-bar-first ">
+                        <ul class="d-inline-flex align-items-center list-unstyled border-end border-start border-dark px-2">
+                            <li><img src="images/bill.svg" alt="" /></li>
+                            <li class="ps-2">
+                                <div><strong>4/~</strong><br />Rounds</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-4 align-items-center menu-bar-first ">
+                        <ul class="d-inline-flex align-items-center list-unstyled">
+                            <li><img src="images/dessert.svg" alt="" /></li>
+                            <li class="ps-2">
+                                <div><strong>0/20</strong><br />Dishes</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12  d-flex align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                  </svg>
+                        <input type="text" class="form-control border-0 ps-2" placeholder="What are you Carving for?" id="search-input">
+                    </div>
+                </div>
+                <div class="row mt-2" id="menu-bar">
+                    <div class="col-12 text-center menu-bar-first">
+                        <button class="btn border menu-bar-first d-inline-flex align-items-center menu-bar-first-button menu-bar-first-button-f bg-light" data-id="draken"><img src="images/drink.svg" alt="" /><strong> Draken</strong></button>
+                        <button class="btn border menu-bar-first d-inline-flex align-items-center menu-bar-first-button menu-bar-first-button-s" data-id="menu"><img src="images/r-menu.svg" alt="" /><strong> Menu</strong></button>
+                        <button class="btn border menu-bar-first d-inline-flex align-items-center menu-bar-first-button menu-bar-first-button-t" data-id="dessert"><img src="images/dessert.svg" alt=""/><strong  class="ps-1" > Dessert</strong></button>
+                    </div>
+                </div>
+                <div class="row mt-1" id="horizental-bar">
+                    <nav id="scroll-bar-draken" class="nav nav-pills horizental-bar-draken">
+                        <div class="d-flex overflow-scroll text-uppercase border-bottom">
+                            <a class="nav-link me-3 my-2 menu-bar-first" href="#list-item-1">warme draken</a>
+                            <a class="nav-link me-3 my-2 menu-bar-first" href="#list-item-2">frisdraken</a>
+                            <a class="nav-link me-3 my-2 menu-bar-first" href="#list-item-3">bieren</a>
+                            <a class="nav-link me-3 my-2 menu-bar-first" href="#list-item-4">warme</a>
+                            <a class="nav-link me-3 my-2 menu-bar-first" href="#list-item-5">frisdraken</a>
+                        </div>
+                    </nav>
+                    <nav id="scroll-bar-menu" class="nav nav-pills horizental-bar-menu hidden">
+                        <div class="d-flex overflow-scroll text-uppercase border-bottom">
+                            <a class="nav-link me-3 my-2 menu-bar-first" href="#list-item-6">warme menu</a>
+                            <a class="nav-link me-3 my-2 menu-bar-first" href="#list-item-7">frisdraken</a>
+                            <a class="nav-link me-3 my-2 menu-bar-first" href="#list-item-8">bieren</a>
+                            <a class="nav-link me-3 my-2 menu-bar-first" href="#list-item-9">warme</a>
+                            <a class="nav-link me-3 my-2 menu-bar-first" href="#list-item-10">frisdraken</a>
+                        </div>
+                    </nav>
+                    <nav id="scroll-bar-dessert" class="nav nav-pills horizental-bar-dessert hidden">
+                        <div class="d-flex overflow-scroll text-uppercase border-bottom">
+                            <a class="nav-link me-3 my-2 menu-bar-first" href="#list-item-11">warme dessert</a>
+                            <a class="nav-link me-3 my-2 menu-bar-first" href="#list-item-12">frisdraken</a>
+                            <a class="nav-link me-3 my-2 menu-bar-first" href="#list-item-13">bieren</a>
+                            <a class="nav-link me-3 my-2 menu-bar-first" href="#list-item-14">warme</a>
+                            <a class="nav-link me-3 my-2 menu-bar-first" href="#list-item-15">frisdraken</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <div class="row pt-2 mb-5" id="scroll-bar-list">
+                <div class="scroll-bar-list-draken" data-bs-target="#scroll-bar-draken" data-bs-offset="7">
+                    <div class="col-12 scroll-bar-item mb-5">
+                        <h4 id="list-item-1">Warme Draken</h4>
+                        <div class="shadow p-2 mb-2 bg-body rounded border-bottom border-secondary border-3 scroll-bar-item-shadow">
+                            <div class="row py-2">
+                                <div class="col-4 text-center">
+                                    <img src="images/coffee.png" alt="" />
+                                </div>
+                                <div class="col-5">
+                                    <strong class="border-start border-2 border-dark ps-2 item-shadow-price">Koffie</strong>
+                                    <br />
+                                    <span class="ps-2">$ 2.90</span>
+                                    <span><img src="images/leaf.svg" class="item-shadow-price-img" alt="" /></span>
+                                    <span><img src="images/leaf.svg" class="item-shadow-price-img" alt="" /></span>
+                                </div>
+                                <div class="col-3 text-end pt-3">
+                                    <img src="images/addCartItem.svg" class="item-shadow-cart-img" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shadow p-2 bg-body rounded border-bottom border-secondary border-3 scroll-bar-item-shadow">
+                            <div class="row py-2">
+                                <div class="col-4 text-center">
+                                    <img src="images/coffee.png" alt="" />
+                                </div>
+                                <div class="col-5">
+                                    <strong class=" border-start border-2 border-dark ps-2 item-shadow-price">koffie</strong>
+                                    <br />
+                                    <span class="ps-2">$ 2.90</span>
+                                    <span><img src="images/leaf.svg" class="item-shadow-price-img" alt="" /></span>
+                                    <span><img src="images/leaf.svg" class="item-shadow-price-img" alt="" /></span>
+                                </div>
+                                <div class="col-3 text-end pt-3">
+                                    <img src="images/addCartItem.svg" class="item-shadow-cart-img" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 scroll-bar-item mb-5">
+                        <h4 id="list-item-2">frisdraken</h4>
+                        <div class="shadow p-2 bg-body rounded border-bottom border-secondary border-3 scroll-bar-item-shadow">
+                            <div class="row py-2">
+                                <div class="col-4 text-center">
+                                    <img src="images/coffee.png" alt="" />
+                                </div>
+                                <div class="col-5">
+                                    <strong class=" border-start border-2 border-dark ps-2 item-shadow-price">koffie</strong>
+                                    <br />
+                                    <span class="ps-2">$ 2.90</span>
+                                    <span><img src="images/leaf.svg" class="item-shadow-price-img" alt="" /></span>
+                                    <span><img src="images/leaf.svg" class="item-shadow-price-img" alt="" /></span>
+                                </div>
+                                <div class="col-3 text-end pt-3">
+                                    <img src="images/addCartItem.svg" class="item-shadow-cart-img" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 scroll-bar-item mb-5">
+                        <h4 id="list-item-3">bieren</h4>
+                        <div class="shadow p-2 bg-body rounded border-bottom border-secondary border-3 scroll-bar-item-shadow">
+                            <div class="row py-2">
+                                <div class="col-4 text-center">
+                                    <img src="images/coffee.png" alt="" />
+                                </div>
+                                <div class="col-5">
+                                    <strong class=" border-start border-2 border-dark ps-2 item-shadow-price">koffie</strong>
+                                    <br />
+                                    <span class="ps-2">$ 2.90</span>
+                                    <span><img src="images/leaf.svg" class="item-shadow-price-img" alt="" /></span>
+                                    <span><img src="images/leaf.svg" class="item-shadow-price-img" alt="" /></span>
+                                </div>
+                                <div class="col-3 text-end pt-3">
+                                    <img src="images/addCartItem.svg" class="item-shadow-cart-img" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 scroll-bar-item mb-5">
+                        <h4 id="list-item-4">warme</h4>
+                        <div class="shadow p-2 bg-body rounded border-bottom border-secondary border-3 scroll-bar-item-shadow">
+                            <div class="row py-2">
+                                <div class="col-4 text-center">
+                                    <img src="images/coffee.png" alt="" />
+                                </div>
+                                <div class="col-5">
+                                    <strong class=" border-start border-2 border-dark ps-2 item-shadow-price">koffie</strong>
+                                    <br />
+                                    <span class="ps-2">$ 2.90</span>
+                                    <span><img src="images/leaf.svg" class="item-shadow-price-img" alt="" /></span>
+                                    <span><img src="images/leaf.svg" class="item-shadow-price-img" alt="" /></span>
+                                </div>
+                                <div class="col-3 text-end pt-3">
+                                    <img src="images/addCartItem.svg" class="item-shadow-cart-img" alt="" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="scroll-bar-list-menu" data-bs-target="#scroll-bar-menu" data-bs-offset="7" style="display: none;">
+                    <div class="col-12 scroll-bar-item mb-5 ">
+                        <h4 id="list-item-6">Warme Menu</h4>
+                        <div class="shadow p-2 mb-2 bg-body rounded border-bottom border-secondary border-3 scroll-bar-item-shadow ">
+                            <div class="row py-2 ">
+                                <div class="col-4 text-center ">
+                                    <img src="images/coffee.png " alt=" " />
+                                </div>
+                                <div class="col-5 ">
+                                    <strong class=" border-start border-2 border-dark ps-2 item-shadow-price ">Espresso</strong>
+                                    <br />
+                                    <span class="ps-2 ">$ 2.90</span>
+                                    <span><img src="images/leaf.svg " class="item-shadow-price-img " alt=" " /></span>
+                                    <span><img src="images/leaf.svg " class="item-shadow-price-img " alt=" " /></span>
+                                </div>
+                                <div class="col-3 text-end pt-3 ">
+                                    <img src="images/addCartItem.svg " class="item-shadow-cart-img " alt=" " />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 scroll-bar-item mb-5 ">
+                        <h4 id="list-item-7">frisdraken</h4>
+                        <div class="shadow p-2 bg-body rounded border-bottom border-secondary border-3 scroll-bar-item-shadow ">
+                            <div class="row py-2 ">
+                                <div class="col-4 text-center ">
+                                    <img src="images/coffee.png " alt=" " />
+                                </div>
+                                <div class="col-5 ">
+                                    <strong class=" border-start border-2 border-dark ps-2 item-shadow-price ">koffie</strong>
+                                    <br />
+                                    <span class="ps-2 ">$ 2.90</span>
+                                    <span><img src="images/leaf.svg " class="item-shadow-price-img " alt=" " /></span>
+                                    <span><img src="images/leaf.svg " class="item-shadow-price-img " alt=" " /></span>
+                                </div>
+                                <div class="col-3 text-end pt-3 ">
+                                    <img src="images/addCartItem.svg " class="item-shadow-cart-img " alt=" " />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 scroll-bar-item mb-5 ">
+                        <h4 id="list-item-8">bieren</h4>
+                        <div class="shadow p-2 bg-body rounded border-bottom border-secondary border-3 scroll-bar-item-shadow ">
+                            <div class="row py-2 ">
+                                <div class="col-4 text-center ">
+                                    <img src="images/coffee.png " alt=" " />
+                                </div>
+                                <div class="col-5 ">
+                                    <strong class=" border-start border-2 border-dark ps-2 item-shadow-price ">koffie</strong>
+                                    <br />
+                                    <span class="ps-2 ">$ 2.90</span>
+                                    <span><img src="images/leaf.svg " class="item-shadow-price-img " alt=" " /></span>
+                                    <span><img src="images/leaf.svg " class="item-shadow-price-img " alt=" " /></span>
+                                </div>
+                                <div class="col-3 text-end pt-3 ">
+                                    <img src="images/addCartItem.svg " class="item-shadow-cart-img " alt=" " />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 scroll-bar-item mb-5 ">
+                        <h4 id="list-item-9">warme</h4>
+                        <div class="shadow p-2 bg-body rounded border-bottom border-secondary border-3 scroll-bar-item-shadow ">
+                            <div class="row py-2 ">
+                                <div class="col-4 text-center ">
+                                    <img src="images/coffee.png " alt=" " />
+                                </div>
+                                <div class="col-5 ">
+                                    <strong class=" border-start border-2 border-dark ps-2 item-shadow-price ">koffie</strong>
+                                    <br />
+                                    <span class="ps-2 ">$ 2.90</span>
+                                    <span><img src="images/leaf.svg " class="item-shadow-price-img " alt=" " /></span>
+                                    <span><img src="images/leaf.svg " class="item-shadow-price-img " alt=" " /></span>
+                                </div>
+                                <div class="col-3 text-end pt-3 ">
+                                    <img src="images/addCartItem.svg " class="item-shadow-cart-img " alt=" " />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-bar-list-dessert" data-bs-target="#scroll-bar-dessert" data-bs-offset="7" style="display: none;">
+                    <div class="col-12 scroll-bar-item mb-5 ">
+                        <h4 id="list-item-11">Warme Dessert</h4>
+                        <div class="shadow p-2 mb-2 bg-body rounded border-bottom border-secondary border-3 scroll-bar-item-shadow ">
+                            <div class="row py-2 ">
+                                <div class="col-4 text-center ">
+                                    <img src="images/coffee.png " alt=" " />
+                                </div>
+                                <div class="col-5 ">
+                                    <strong class=" border-start border-2 border-dark ps-2 item-shadow-price ">Cappuccino</strong>
+                                    <br />
+                                    <span class="ps-2 ">$ 2.90</span>
+                                    <span><img src="images/leaf.svg " class="item-shadow-price-img " alt=" " /></span>
+                                    <span><img src="images/leaf.svg " class="item-shadow-price-img " alt=" " /></span>
+                                </div>
+                                <div class="col-3 text-end pt-3 ">
+                                    <img src="images/addCartItem.svg " class="item-shadow-cart-img " alt=" " />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 scroll-bar-item mb-5 ">
+                        <h4 id="list-item-12">frisdraken</h4>
+                        <div class="shadow p-2 bg-body rounded border-bottom border-secondary border-3 scroll-bar-item-shadow ">
+                            <div class="row py-2 ">
+                                <div class="col-4 text-center ">
+                                    <img src="images/coffee.png " alt=" " />
+                                </div>
+                                <div class="col-5 ">
+                                    <strong class=" border-start border-2 border-dark ps-2 item-shadow-price ">koffie</strong>
+                                    <br />
+                                    <span class="ps-2 ">$ 2.90</span>
+                                    <span><img src="images/leaf.svg " class="item-shadow-price-img " alt=" " /></span>
+                                    <span><img src="images/leaf.svg " class="item-shadow-price-img " alt=" " /></span>
+                                </div>
+                                <div class="col-3 text-end pt-3 ">
+                                    <img src="images/addCartItem.svg " class="item-shadow-cart-img " alt=" " />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 scroll-bar-item mb-5 ">
+                        <h4 id="list-item-13">bieren</h4>
+                        <div class="shadow p-2 bg-body rounded border-bottom border-secondary border-3 scroll-bar-item-shadow ">
+                            <div class="row py-2 ">
+                                <div class="col-4 text-center ">
+                                    <img src="images/coffee.png " alt=" " />
+                                </div>
+                                <div class="col-5 ">
+                                    <strong class=" border-start border-2 border-dark ps-2 item-shadow-price ">koffie</strong>
+                                    <br />
+                                    <span class="ps-2 ">$ 2.90</span>
+                                    <span><img src="images/leaf.svg " class="item-shadow-price-img " alt=" " /></span>
+                                    <span><img src="images/leaf.svg " class="item-shadow-price-img " alt=" " /></span>
+                                </div>
+                                <div class="col-3 text-end pt-3 ">
+                                    <img src="images/addCartItem.svg " class="item-shadow-cart-img " alt=" " />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 scroll-bar-item mb-5 ">
+                        <h4 id="list-item-14">warme</h4>
+                        <div class="shadow p-2 bg-body rounded border-bottom border-secondary border-3 scroll-bar-item-shadow ">
+                            <div class="row py-2 ">
+                                <div class="col-4 text-center ">
+                                    <img src="images/coffee.png " alt=" " />
+                                </div>
+                                <div class="col-5 ">
+                                    <strong class=" border-start border-2 border-dark ps-2 item-shadow-price ">koffie</strong>
+                                    <br />
+                                    <span class="ps-2 ">$ 2.90</span>
+                                    <span><img src="images/leaf.svg " class="item-shadow-price-img " alt=" " /></span>
+                                    <span><img src="images/leaf.svg " class="item-shadow-price-img " alt=" " /></span>
+                                </div>
+                                <div class="col-3 text-end pt-3 ">
+                                    <img src="images/addCartItem.svg " class="item-shadow-cart-img " alt=" " />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-2 mb-5" id="search-bar-list">
+                <div class="col-12 scroll-bar-item mb-5" id="serch-bar-list-item">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar fixed-bottom navbar-light navbar-white ">
+        <div class="container ">
+            <div class="row mx-auto ">
+                <div class="col-3 menu-bar-first ">
+                    <div class="text-center ">
+                        <img src="images/book.svg " alt=" " /><br />Menu
+                    </div>
+                </div>
+                <div class="col-3 menu-bar-first ">
+                    <div class="text-center ">
+                        <img src="images/bill.svg " alt=" " /><br />Bill
+                    </div>
+                </div>
+                <div class="col-3 menu-bar-first ">
+                    <div class="text-center ">
+                        <img src="images/order.svg " alt=" " /><br />Order
+                    </div>
+                </div>
+                <div class="col-3 menu-bar-first ">
+                    <div class="text-center ">
+                        <img src="images/service.svg " alt=" " /><br />Services
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+</body>
+
+</html>

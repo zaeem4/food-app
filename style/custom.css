@@ -1,0 +1,146 @@
+html,
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+header img {
+    height: 30vh;
+    width: 100%;
+}
+
+.nav-link {
+    display: block;
+    padding: .375rem .75rem;
+    color: #212529;
+    text-decoration: none;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+.nav {
+    flex-wrap: nowrap;
+}
+
+#fixed-scroll {
+    height: 95vh;
+    overflow: scroll;
+}
+
+#scroll-bar-list img,
+#search-bar-list img {
+    width: 12vh;
+}
+
+.scroll-bar-list-draken,
+.scroll-bar-list-menu,
+.scroll-bar-list-dessert,
+#search-bar-list {
+    height: 45vh;
+    overflow-y: scroll;
+    position: relative;
+}
+
+#search-bar-list {
+    display: none;
+}
+
+.btn:focus {
+    box-shadow: none!important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none!important;
+}
+
+.item-shadow-cart-img {
+    width: 3.5vh!important;
+    cursor: pointer;
+}
+
+.item-shadow-price-img {
+    width: 2vh!important;
+}
+
+.modal-content img {
+    width: 35vh;
+}
+
+.modal-content {
+    font-size: small;
+    font-weight: bold;
+}
+
+.qty .count {
+    color: #000;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 10px;
+    padding: 0 2px;
+    min-width: 35px;
+    text-align: center;
+    margin-top: -5px;
+}
+
+.qty .minus,
+.qty .plus {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    color: deeppink;
+    width: 3vh;
+    height: 3vh;
+    font: 16px /1 Arial, sans-serif;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: bold;
+    border: 1px solid deeppink;
+}
+
+.minus:hover {
+    background-color: deeppink !important;
+    color: white;
+}
+
+.plus:hover {
+    background-color: deeppink !important;
+    color: white;
+}
+
+
+/*Prevent text selection*/
+
+span {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+input {
+    border: 0;
+    width: 2%;
+}
+
+nput::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input:disabled {
+    background-color: white;
+}
+
+.form-control:focus {
+    border: none;
+    box-shadow: none;
+}
+
+@media screen and (min-width: 800px) {
+     ::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
+    }
+}
